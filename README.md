@@ -1,22 +1,28 @@
 # AcademiVerse
 
-A comprehensive academic management platform built with Spring Boot and Next.js, designed to streamline educational processes for students and instructors.
+**The Modern Learning Management System**
+
+A comprehensive, cloud-native academic management platform built with Spring Boot and Next.js, designed to streamline educational processes and enhance collaboration between students and instructors. AcademiVerse brings together intuitive course management, intelligent assessment tools, and real-time collaboration features.
+
+**Powered by AI** | **Cloud-Ready** | **Enterprise Secure**
 
 ## Features
 
 ### For Students
-- **Course Management**: Enroll in courses, view course materials, and track progress
-- **Assignment System**: Submit assignments, view grades, and track deadlines
-- **Quiz Platform**: Take quizzes with real-time grading
-- **To-Do Management**: Organize tasks and deadlines efficiently
-- **Grade Tracking**: Monitor academic performance across all courses
+- **Interactive Courses**: Enroll in courses, access comprehensive materials, and track your learning progress in real-time
+- **Assignment Tracking**: Submit assignments seamlessly with deadline management and instant feedback
+- **Quiz & Assessment**: Take interactive quizzes with immediate grading and performance analytics
+- **Personal Dashboard**: Organize your academic life with an integrated to-do list and task management system
+- **Performance Analytics**: Monitor your grades across all courses with detailed performance insights
+- **Peer Collaboration**: Connect with classmates and engage in course discussions
 
 ### For Instructors
-- **Course Administration**: Create and manage courses, modules, and content
-- **Assignment Creation**: Design assignments with file upload support
-- **Quiz Builder**: Create interactive quizzes with multiple question types
-- **Grade Management**: Efficient grading system with bulk operations
-- **Announcements**: Communicate with students through course announcements
+- **Comprehensive Course Management**: Create and manage courses, organize modules, and structure content effortlessly
+- **Smart Assignment Builder**: Design assignments with flexible file upload support and deadline configuration
+- **AI-Powered Quiz Generation**: **NEW** Automatically generate quiz questions from course materials using OpenAI API
+- **Intelligent Grading System**: Efficient grading workflows with bulk operations and detailed analytics
+- **Class Communication**: Post announcements and maintain active communication with your entire class
+- **Grade Management**: Track and manage student performance with detailed reporting and export capabilities
 
 ## Architecture
 
@@ -49,21 +55,25 @@ AcademiVerse/
 - **Framework**: Spring Boot 3.x
 - **Database**: MySQL/PostgreSQL (AWS RDS)
 - **ORM**: Spring Data JPA
-- **Security**: Spring Security (Azure Entra ID)
-- **Cloud Storage**: AWS S3
-- **Testing**: JUnit
+- **Authentication & Security**: Spring Security with OAuth2 (Azure Entra ID)
+- **Cloud Storage**: AWS S3 for file management
+- **AI Integration**: OpenAI API for intelligent quiz generation from document content
+- **PDF Processing**: PDFBox for document parsing and text extraction
+- **Testing**: JUnit & Spring Security Test
 
 ### Frontend
-- **Framework**: Next.js 14
-- **Styling**: MUI + CSS
-- **Authentication**: NextAuth.js (Azure Entra ID)
-- **Testing**: Jest, Cypress
-- **HTTP Client**: Axios
+- **Framework**: Next.js 14 (React 18)
+- **UI Components**: Material-UI (MUI) with custom CSS styling
+- **State Management**: NextAuth.js with Azure Entra ID integration
+- **HTTP Client**: Axios for API communication
+- **Testing & QA**: Jest for unit testing, Cypress for end-to-end testing
+- **Date Management**: Day.js for lightweight date handling
 
-### DevOps
-- **CI/CD**: CircleCI
-- **Deployment**: AWS Elastic Beanstalk
-- **Version Control**: Git
+### DevOps & Deployment
+- **CI/CD Pipeline**: CircleCI for automated testing and deployment
+- **Cloud Hosting**: AWS Elastic Beanstalk for scalable backend deployment
+- **Version Control**: Git with GitHub
+- **Infrastructure**: AWS cloud services (RDS, S3, Elastic Beanstalk)
 
 ## Prerequisites
 
@@ -117,6 +127,21 @@ The frontend will be available at `http://localhost:3000`
 
 ## Configuration
 
+### OpenAI Integration Setup
+To enable AI-powered quiz generation, you'll need to configure your OpenAI API key:
+
+```properties
+# Backend Configuration
+# Add your OpenAI API key in QuizService.java
+# Replace "Bearer " with "Bearer YOUR_OPENAI_API_KEY"
+```
+
+The system will automatically:
+- Extract text from uploaded course documents (PDF support)
+- Send content to OpenAI GPT-4 for intelligent question generation
+- Parse and validate the generated questions
+- Return formatted quiz questions ready for student assessment
+
 ### Backend Configuration
 Create `application.properties` in `src/main/resources/`:
 
@@ -145,7 +170,8 @@ NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=your-secret-key
 API_BASE_URL=http://localhost:8080
 ```
-Edit http.js to use API_BASE_URL as a base URL for client.
+
+Configure the HTTP client in `src/lib/client/http.js` to use `API_BASE_URL` as the base URL for all API requests.
 
 ## Testing
 
@@ -185,10 +211,23 @@ eb deploy
 
 ## Security
 
-- Azure Entra ID based authentication (JWT)
-- Role-based access control (RBAC)
-- Input validation and sanitization
-- SQL injection prevention
+AcademiVerse implements enterprise-grade security measures:
+
+- **Enterprise Authentication**: Azure Entra ID integration for secure single sign-on
+- **JWT Token Security**: JSON Web Tokens with role-based access control (RBAC)
+- **SQL Injection Prevention**: Parameterized queries and ORM protection via Spring Data JPA
+- **Input Validation & Sanitization**: Comprehensive server-side validation and HTML sanitization
+- **Secure File Handling**: AWS S3 integration for secure document storage
+- **OAuth2 Security**: Industry-standard OAuth2 for API security
+
+## Key Innovations
+
+- **AI-Powered Content Analysis**: Automatically generate assessment questions from course documents using OpenAI's advanced language models
+- **Responsive Design**: Fully responsive UI that works seamlessly across desktop, tablet, and mobile devices
+- **Cloud-Native Architecture**: Built for scalability and reliability on AWS infrastructure
+- **Real-time Updates**: Instant synchronization of grades, announcements, and course materials
+- **Advanced Analytics**: Comprehensive dashboards for tracking student progress and course performance
+- **Enterprise-Grade Security**: Multi-layered security with OAuth2 and role-based access control
 
 ## Acknowledgments
 
