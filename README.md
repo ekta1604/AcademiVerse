@@ -19,7 +19,7 @@ A comprehensive, cloud-native academic management platform built with Spring Boo
 ### For Instructors
 - **Comprehensive Course Management**: Create and manage courses, organize modules, and structure content effortlessly
 - **Smart Assignment Builder**: Design assignments with flexible file upload support and deadline configuration
-- **AI-Powered Quiz Generation**: **NEW** Automatically generate quiz questions from course materials using OpenAI API
+- **AI-Powered Quiz Generation**: Automatically generate quiz questions from course materials using OpenAI API
 - **Intelligent Grading System**: Efficient grading workflows with bulk operations and detailed analytics
 - **Class Communication**: Post announcements and maintain active communication with your entire class
 - **Grade Management**: Track and manage student performance with detailed reporting and export capabilities
